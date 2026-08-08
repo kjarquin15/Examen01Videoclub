@@ -125,8 +125,8 @@ public class Videoclub {
 			if (pelicula.getTitulo()
 			.toLowerCase().contains(texto.toLowerCase())) {
 			resultados.add(pelicula);
-			}	
-			}
+					}	
+				}
 			return resultados;
 		}
 		
@@ -156,9 +156,18 @@ public class Videoclub {
 	 *   excepción.
 	 */
 	public Pelicula peliculaMasAntiguaDeGenero(String genero) {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar peliculaMasAntiguaDeGenero() en Videoclub");
-	}
+				    Pelicula masAntigua = null;
+
+		    for (Pelicula pelicula : peliculas) {
+		     if (pelicula.getGenero().equals(genero)) {
+		        if (masAntigua == null
+		             || pelicula.getAnioEstreno() < masAntigua.getAnioEstreno()) {
+		              masAntigua = pelicula;
+		            }
+		        }
+		    }
+		    return masAntigua;
+		}
 
 	/**
 	 * RETO OPCIONAL (10 pts extra): completar alquilarPrimeraDisponibleDeGenero().

@@ -153,7 +153,7 @@ public class Videoclub {
 	 * - Compara géneros con equals(), nunca con ==.
 	 * - Compara años con &lt;, nunca con ==.
 	 * - Si el género no existe o no tiene películas, retorna null, no lanza
-	 *   excepción
+	 *   excepción.
 	 */
 	public Pelicula peliculaMasAntiguaDeGenero(String genero) {
 				    Pelicula masAntigua = null;
@@ -189,8 +189,15 @@ public class Videoclub {
 	 *   retorna null).
 	 */
 	public Pelicula alquilarPrimeraDisponibleDeGenero(String genero) throws PeliculaNoDisponibleException {
-		// TODO (opcional): reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException(
-				"TODO opcional: completar alquilarPrimeraDisponibleDeGenero() en Videoclub");
+		    for (Pelicula pelicula : peliculas) {
+		        if (pelicula.getGenero().equals(genero)
+		                && pelicula.estaDisponible()) {
+
+		            pelicula.alquilar();
+		            return pelicula;
+		        }
+		    }
+		    throw new PeliculaNoDisponibleException(
+		            "No hay películas disponibles del género " + genero);
+		}
 	}
-}

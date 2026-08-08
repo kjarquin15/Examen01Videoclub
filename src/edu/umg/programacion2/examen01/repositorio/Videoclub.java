@@ -89,11 +89,17 @@ public class Videoclub {
 	 * - Si el catálogo está vacío, retorna un Map vacío (no null).
 	 */
 	public Map<String, Integer> contarPeliculasPorGenero() {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar contarPeliculasPorGenero() en Videoclub");
+		Map<String, Integer> conteo = new HashMap<>();
+		for (Pelicula pelicula : peliculas) {
+			String genero = pelicula.getGenero();
+			int cantidadActual = conteo.getOrDefault(genero, 0);
+			conteo.put(genero, cantidadActual + 1);
+		}
+		return conteo;
 	}
-
-	/**
+	
+		
+		/**
 	 * PREGUNTA PRÁCTICA 2 (20 pts): completar buscarPorTituloParcial().
 	 * <p>
 	 * Enunciado: recorrer el catálogo y devolver solo las películas cuyo
@@ -114,9 +120,16 @@ public class Videoclub {
 	 * - Si no hay coincidencias, retorna una lista vacía (no null).
 	 */
 	public List<Pelicula> buscarPorTituloParcial(String texto) {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar buscarPorTituloParcial() en Videoclub");
-	}
+				List<Pelicula> resultados = new ArrayList<>();
+			for (Pelicula pelicula : peliculas) {
+			if (pelicula.getTitulo()
+			.toLowerCase().contains(texto.toLowerCase())) {
+			resultados.add(pelicula);
+			}	
+			}
+			return resultados;
+		}
+		
 
 	/**
 	 * PREGUNTA PRÁCTICA 3 (20 pts): completar peliculaMasAntiguaDeGenero().

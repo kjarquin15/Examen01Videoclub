@@ -153,7 +153,7 @@ public class Videoclub {
 	 * - Compara géneros con equals(), nunca con ==.
 	 * - Compara años con &lt;, nunca con ==.
 	 * - Si el género no existe o no tiene películas, retorna null, no lanza
-	 *   excepción.
+	 *   excepción
 	 */
 	public Pelicula peliculaMasAntiguaDeGenero(String genero) {
 				    Pelicula masAntigua = null;
